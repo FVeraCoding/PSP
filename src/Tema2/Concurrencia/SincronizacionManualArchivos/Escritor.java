@@ -1,4 +1,4 @@
-package Tema2.Concurrencia;
+package Tema2.Concurrencia.SincronizacionManualArchivos;
 
 public class Escritor implements Runnable {
 

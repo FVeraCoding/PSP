@@ -1,4 +1,4 @@
-package Tema2.Concurrencia;
+package Tema2.Concurrencia.SincronizacionManualArchivos;
 
 import java.io.BufferedReader;
 import java.io.File;
