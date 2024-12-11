@@ -12,8 +12,6 @@ public class PrepararPlatoPrincipal implements Callable<String>{
         this.platoPrincipal = platoPrincipal;
     }
     
-    
-    
     @Override
     public String call() throws Exception {
         Thread.sleep(5000);
