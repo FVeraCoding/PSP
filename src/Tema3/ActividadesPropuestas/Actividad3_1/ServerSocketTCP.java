@@ -34,9 +34,12 @@ public class ServerSocketTCP {
         socket = socketServidor.accept();
         is = socket.getInputStream();
         os = socket.getOutputStream();        
-        System.out.println("(Servidor) Conexión establecida.");
+        System.out.println("(Servidor) Conexion establecida.");
         
-        leerEnviar(leerRuta());
+        String ruta = leerRuta();
+        leerEnviar(ruta);
+        
+        stop();
     }
     
     public void stop() throws IOException{
@@ -59,19 +62,19 @@ public class ServerSocketTCP {
     
     public void leerEnviar(String ruta) throws FileNotFoundException, IOException{
         BufferedReader br = new BufferedReader(new FileReader(new File(ruta)));
-        
-        
-        
+
         PrintWriter pw = new PrintWriter(os, true);
         
         String linea = br.readLine();
         
         while(linea != null){
             pw.println(linea);
+            linea = br.readLine();
         }
         
         pw.println("FIN");
         
+        System.out.println("Mensaje leido y enviado correctamente.");
         
     }
     
@@ -82,9 +85,6 @@ public class ServerSocketTCP {
         } catch (IOException ex) {
             Logger.getLogger(ServerSocketTCP.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-        
-        
     }
             
 }

@@ -32,15 +32,16 @@ public class ClientSocketTCP {
     }
     
     public void start() throws IOException{
-        System.out.println("(Cliente) Estableciendo conexión...");
+        System.out.println("(Cliente) Estableciendo conexion...");
         socket = new Socket(serverIP, serverPort);
         os = socket.getOutputStream();
         is = socket.getInputStream();
-        System.out.println("(Cliente) Conexión establecida.");
+        System.out.println("(Cliente) Conexion establecida.");
         
         this.enviarRuta();
         this.recibirImprimir();
         
+        this.stop();
     }
     
     public void stop() throws IOException{
@@ -57,8 +58,7 @@ public class ClientSocketTCP {
         System.out.println("Escribe la ruta absoluta del archivo que quieres que se lea en el servidor.");
         String ruta = sc.nextLine();
         
-        pw.println(ruta);
-        
+        pw.println(ruta);   
     }
     
     public void recibirImprimir() throws IOException{
@@ -67,13 +67,13 @@ public class ClientSocketTCP {
         
         while(!linea.equalsIgnoreCase("FIN")){
             System.out.println(linea);
-        }
-        this.stop();        
+            linea = br.readLine();
+        }       
     }
     
     public static void main(String[] args) {
-        ClientSocketTCP socketCliente = new ClientSocketTCP("localhost", 5050);
         try {
+            ClientSocketTCP socketCliente = new ClientSocketTCP("localhost", 5050);
             socketCliente.start();
         } catch (IOException ex) {
             Logger.getLogger(ClientSocketTCP.class.getName()).log(Level.SEVERE, null, ex);
