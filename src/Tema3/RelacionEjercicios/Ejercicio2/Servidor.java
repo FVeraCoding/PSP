@@ -1,3 +1,5 @@
+package Tema3.RelacionEjercicios.Ejercicio2;
+
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.InetAddress;
